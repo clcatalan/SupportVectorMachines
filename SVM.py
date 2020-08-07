@@ -4,6 +4,22 @@ from sklearn import svm
 from sklearn import metrics
 from sklearn.neighbors import KNeighborsClassifier
 
+
+def printAll():
+    print("-------PREDICTIONS-------")
+    for i in range(len(y_pred)):
+        actual = ''
+        predicted = ''
+        if(y_test[i] == 1 or y_pred[i] == 1):
+            actual = classes[0]
+            predicted = classes[0]
+        elif(y_test[i] == 0 or y_pred[i] == 0):
+            actual = classes[1]
+            predicted = classes[1]
+
+        print(f"[{i+1}]: Actual: {actual} | Predicted: {predicted}")
+
+
 cancer = datasets.load_breast_cancer()
 
 
@@ -18,5 +34,19 @@ clf.fit(x_train, y_train)
 
 y_pred = clf.predict(x_test)
 acc = metrics.accuracy_score(y_test,y_pred)
-print(acc)
+
+print("-------RESULTS-------")
+print("|")
+print("|")
+print("|")
+print(f"Model Accurracy: {acc}")
+print("|")
+print("|")
+printAll()
+
+
+
+
+
+
 
